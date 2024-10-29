@@ -32,6 +32,7 @@
           </div>
           <div class="card-body">
             <form th:action="@{/playera/salvar-playera}" method="POST" th:object="${playera}" enctype="multipart/form-data">
+
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="color">Color*</label>
@@ -48,11 +49,11 @@
                        th:errors="*{talla}"></div>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="tipoManga">Tipo de Manga*</label>
-                  <input type="text" class="form-control" id="tipoManga" name="tipoManga"
-                         th:field="*{tipoManga}" required>
-                  <div class="text-danger" th:if="${#fields.hasErrors('tipoManga')}"
-                       th:errors="*{tipoManga}"></div>
+                  <label>Tipo de Manga*</label>
+                  <select class="form-control" th:field="*{tipoManga}" required>
+                    <option value="CORTA">CORTA</option>
+                    <option value="LARGA">LARGA</option>
+                  </select>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="stock">Stock*</label>

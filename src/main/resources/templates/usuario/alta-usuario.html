@@ -58,13 +58,13 @@
                        th:errors="*{apellidoMat}"></div>
                 </div>
 
-                <!--div class="form-group col-md-6">
+                <div class="form-group col-md-6">
                   <label for="fechaNac">Fecha de Nacimiento*</label>
-                  <input type="datetime-local" class="form-control" id="fechaNac" name="fechaNac"
+                  <input type="date" class="form-control" id="fechaNac" name="fechaNac"
                          th:field="*{fechaNac}" required>
                   <div class="text-danger" th:if="${#fields.hasErrors('fechaNac')}"
                        th:errors="*{fechaNac}"></div>
-                </div-->
+                </div>
 
                 <div class="form-group col-md-6">
                   <label for="rfc">RFC*</label>
@@ -104,6 +104,14 @@
                          th:field="*{esAdmin}" required>
                   <div class="text-danger" th:if="${#fields.hasErrors('esAdmin')}"
                        th:errors="*{esAdmin}"></div>
+                </div>
+
+                <div class="form-group col-lf-3">
+                  <label for="ventasRealizadas">Ventas realizadas*</label>
+                  <input type="number" class="form-control" id="ventasRealizadas" name="ventasRealizadas"
+                         th:field="*{ventasRealizadas}" required>
+                  <div class="text-danger" th:if="${#fields.hasErrors('ventasRealizadas')}"
+                       th:errors="*{ventasRealizadas}"></div>
                 </div>
 
               </div>

@@ -1,8 +1,10 @@
 package mx.unam.dgtic.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -37,10 +39,17 @@ public class Usuario {
     @Column(name = "apellido_mat")
     private String apellidoMat;
     @Column(name = "fecha_nac")
-    private Date fechaNac;
+    private LocalDate fechaNac;
+    @Size(min = 13, max = 13, message = "El RFC debe tener exactamente 13 caracteres")
     private String rfc;
+    @NotBlank(message = "El correo no puede estar vacío")
+    @Pattern(
+            regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$",
+            message = "El correo debe ser válido"
+    )
     private String mail;
     private String username;
+    @Size(min = 8, max = 13, message = "La contraseña debe tener entre 8 y 12 caracteres")
     @Column(name = "Contraseña")
     private String contrasena;
     @Column(name = "es_admin")
@@ -51,7 +60,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellidoPat, String apellidoMat, Date fechaNac, String rfc, String mail, String username, String contrasena, Boolean esAdmin, Integer ventasRealizadas) {
+    public Usuario(String nombre, String apellidoPat, String apellidoMat, LocalDate fechaNac, String rfc, String mail, String username, String contrasena, Boolean esAdmin, Integer ventasRealizadas) {
         this.nombre = nombre;
         this.apellidoPat = apellidoPat;
         this.apellidoMat = apellidoMat;

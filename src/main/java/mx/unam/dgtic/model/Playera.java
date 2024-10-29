@@ -1,8 +1,13 @@
 package mx.unam.dgtic.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 
@@ -27,7 +32,6 @@ import java.util.Objects;
                 "ORDER BY p.precioVenta"
 )
 
-
 @Entity
 @Data
 public class Playera {
@@ -37,18 +41,23 @@ public class Playera {
     private Integer idPlayera;
 
     private String color;
+    @Pattern(regexp = "CH|M|G|XG", message = "La talla debe ser CH, M, G o XG")
     private String talla;
 
     @Column(name = "tipo_manga")
     private String tipoManga;
 
+    @Digits(integer = 4,fraction = 2,message = "Valor incorrecto, se esparaba [4].[2] dígitos.")
+    @DecimalMin(value = "0.0",inclusive = false)
     @Column(name = "precio_real")
-    private Double precioReal;
+    private BigDecimal precioReal;
 
     private Integer stock;
 
+    @Digits(integer = 4,fraction = 2,message = "Valor incorrecto, se esparaba [4].[2] dígitos.")
+    @DecimalMin(value = "0.0",inclusive = false)
     @Column(name = "precio_venta")
-    private Double precioVenta;
+    private BigDecimal precioVenta;
 
     @ManyToOne
     @JoinColumn(name = "id_marca")
@@ -63,7 +72,7 @@ public class Playera {
     public Playera() {
     }
 
-    public Playera(String color, String talla, String tipoManga, Double precioReal, Integer stock, Double precioVenta, Marca marca, Equipo equipo) {
+    public Playera(String color, String talla, String tipoManga, BigDecimal precioReal, Integer stock, BigDecimal precioVenta, Marca marca, Equipo equipo) {
         this.color = color;
         this.talla = talla;
         this.tipoManga = tipoManga;
