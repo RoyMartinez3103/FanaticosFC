@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,5 +41,10 @@ public class MarcaServiceImpl implements GenericService<Marca,Integer> {
     @Transactional
     public void borrar(Integer id) {
         marcaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Marca> mostrar() {
+        return marcaRepository.findAll();
     }
 }

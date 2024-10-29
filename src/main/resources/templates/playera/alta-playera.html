@@ -68,6 +68,30 @@
                   <div class="text-danger" th:if="${#fields.hasErrors('precioVenta')}"
                        th:errors="*{precioVenta}"></div>
                 </div>
+                <div class="form-group col-md-6">
+                  <label for="precioReal">Precio Real*</label>
+                  <input type="text" class="form-control" id="precioReal" name="precioReal"
+                         th:field="*{precioReal}" required>
+                  <div class="text-danger" th:if="${#fields.hasErrors('precioReal')}"
+                       th:errors="*{precioReal}"></div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="equipo">Equipo</label>
+                  <select class="form-control" th:field="*{equipo}" id="equipo" name="equipo" required>
+                    <option value="" disabled selected>Selecciona un equipo</option>
+                    <option th:each="sel : ${equipo}" th:value="${sel.idEquipo}" th:text="${sel.nombre}"></option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="marca">Marca</label>
+                  <select class="form-control" th:field="*{marca}" id="marca" name="marca" required>
+                    <option value="" disabled selected>Selecciona una marca</option>
+                    <option th:each="sel : ${marca}" th:value="${sel.idMarca}" th:text="${sel.nombre}"></option>
+                  </select>
+                </div>
+
 
               </div>
               <div class="text-right">

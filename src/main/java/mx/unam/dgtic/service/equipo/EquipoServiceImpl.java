@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,4 +42,11 @@ public class EquipoServiceImpl implements GenericService<Equipo,Integer> {
     public void borrar(Integer id) {
         equipoRepository.deleteById(id);
     }
+
+    @Override
+    public List<Equipo> mostrar() {
+        return equipoRepository.findAll();
+    }
+
+
 }

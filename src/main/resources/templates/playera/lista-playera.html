@@ -32,7 +32,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable">
+              <table class="table table-bordered" id="dataTable" >
                 <thead>
                 <tr>
                   <th>ID</th>
@@ -56,8 +56,8 @@
                   <td th:text="${playera.precioReal}"></td>
                   <td th:text="${playera.stock}"></td>
                   <td th:text="${playera.precioVenta}"></td>
-                  <!--td th:text="${playera.idMarca.nombre}"></td>
-                  <td th:text="${playera.idEquipo.nombre}"></td-->
+                  <td th:text="${playera.marca.nombre}"></td>
+                  <td th:text="${playera.equipo.nombre}"></td-->
                   <td>
                     <a th:href="@{/playera/editar/} + ${playera.idPlayera}" class="btn btn-warning btn-sm">
                       <i class="fas fa-edit"></i>

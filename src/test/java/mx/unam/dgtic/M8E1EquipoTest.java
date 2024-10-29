@@ -1,7 +1,9 @@
 package mx.unam.dgtic;
 
 import mx.unam.dgtic.model.Equipo;
+import mx.unam.dgtic.model.Playera;
 import mx.unam.dgtic.repository.EquipoRepository;
+import mx.unam.dgtic.repository.PlayeraRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +15,8 @@ class M8E1EquipoTest {
 
 	@Autowired
 	EquipoRepository equipoRepository;
+	@Autowired
+	PlayeraRepository playeraRepository;
 
 	@Test
 	void mostrarTodosTest(){
@@ -23,6 +27,13 @@ class M8E1EquipoTest {
 		System.out.println("-- EQUIPOS --");
 		Iterable<Equipo> it_equipo = equipoRepository.findAll();
 		it_equipo.forEach(System.out::println);
+	}
+
+	@Test
+	void mostrarPlayeras(){
+		System.out.println("PLayeras");
+		Iterable<Playera> it_playera = playeraRepository.findAll();
+		it_playera.forEach(System.out::println);
 	}
 
 /*	@Test
