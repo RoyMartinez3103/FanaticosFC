@@ -16,10 +16,7 @@ public class InicioController {
 
     @GetMapping("/")
     public String inicioPagina(Model model) {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        model.addAttribute("nombreAplicacion", nombreApp);
-        model.addAttribute("fecha", formato.format(new Date()));
-        return "layout/layout";
+        return "/home";
     }
 
     @GetMapping("/inicio")
